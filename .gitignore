@@ -1,0 +1,43 @@
+backend-presupuesto/node_modules/*
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# Compiled output
+/presupuesto-familiar/dist
+/presupuesto-familiar/tmp
+/presupuesto-familiar/out-tsc
+/presupuesto-familiar/bazel-out
+
+# Node
+/presupuesto-familiar/node_modules
+/presupuesto-familiar/npm-debug.log
+/presupuesto-familiar/yarn-error.log
+
+# IDEs and editors
+/presupuesto-familiar/.idea/
+/presupuesto-familiar/.project
+/presupuesto-familiar/.classpath
+/presupuesto-familiar/.c9/
+/presupuesto-familiar/*.launch
+/presupuesto-familiar/.settings/
+/presupuesto-familiar/*.sublime-workspace
+
+# Visual Studio Code
+/presupuesto-familiar/.vscode/*
+/presupuesto-familiar/!.vscode/settings.json
+/presupuesto-familiar/!.vscode/tasks.json
+/presupuesto-familiar/!.vscode/launch.json
+/presupuesto-familiar/!.vscode/extensions.json
+/presupuesto-familiar/.history/*
+
+# Miscellaneous
+/presupuesto-familiar/.angular/cache
+/presupuesto-familiar/.sass-cache/
+/presupuesto-familiar/connect.lock
+/presupuesto-familiar/coverage
+/presupuesto-familiar/libpeerconnection.log
+/presupuesto-familiar/testem.log
+/presupuesto-familiar/typings
+
+# System files
+/presupuesto-familiar/.DS_Store
+/presupuesto-familiar/Thumbs.db
