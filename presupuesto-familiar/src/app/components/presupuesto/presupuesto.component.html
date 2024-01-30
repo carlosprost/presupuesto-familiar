@@ -1,0 +1,12 @@
+<section class="presupuesto">
+  <p>Resto: {{ resto | currency : "USD" : "symbol" : "1.2-2" }}</p>
+  <p>
+    Perdida por gastos:
+    {{ (egresoTotal * 100) / ingresoTotal | number : "1.2-2" }}%
+  </p>
+  <p>
+    Comida: {{ (resto * 70) / 100 | currency : "USD" : "symbol" : "1.2-2" }} -
+    70%
+  </p>
+  <p>Ahorro: {{ (resto * 30) / 100 | currency : "USD" : "symbol" : "1.2-2" }} - 30%</p>
+</section>

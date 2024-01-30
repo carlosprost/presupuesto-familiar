@@ -1,0 +1,36 @@
+<section class="egreso">
+    <div class="tabla">
+        <table>
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>concepto</th>
+                    <th>monto</th>
+                    <th>acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (egreso of egresos ; track egreso){
+                    <tr>
+                        <td>{{ egreso.id_egreso }}</td>
+                        <td>{{ egreso.concepto }}</td>
+                        <td>{{ egreso.monto_egreso | currency:'USD':'symbol':'1.2-2' }}</td>
+                        <td>
+                            <button (click)="deleteEgreso(egreso)">Eliminar</button>
+                        </td>
+                    </tr>
+                }
+                <tr>
+                    <td colspan="2">Total</td>
+                    <td>{{ total | currency:'USD':'symbol':'1.2-2' }}</td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    <div class="formulario">
+        <app-form-egreso (newEgreso)="addEgreso($event)"></app-form-egreso>
+    </div>
+    
+</section>

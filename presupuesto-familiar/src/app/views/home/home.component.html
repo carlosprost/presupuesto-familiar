@@ -1,0 +1,19 @@
+<section class="home">
+  <div class="row">
+    <app-ingreso
+      [ingresos]="(loadIngresoData | async) || []"
+      [total]="ingresoTotal"
+      (newIngreso)="addIngreso($event)"
+      (delIngreso)="deleteIngreso($event)"
+    ></app-ingreso>
+    <app-egreso
+      [egresos]="(loadEgresoData | async) || []"
+      [total]="egresoTotal"
+      (newEgreso)="addEgreso($event)"
+      (delEgreso)="deleteEgreso($event)"
+    ></app-egreso>
+  </div>
+  <div class="row">
+    <app-presupuesto [ingresoTotal]="ingresoTotal" [egresoTotal]="egresoTotal" [resto]="resto"></app-presupuesto>
+  </div>
+</section>

@@ -1,0 +1,36 @@
+<section class="ingreso">
+    <div class="tabla">
+        <table>
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>concepto</th>
+                    <th>monto</th>
+                    <th>acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (ingreso of ingresos ; track ingreso){
+                    <tr>
+                        <td>{{ ingreso.id_ingreso }}</td>
+                        <td>{{ ingreso.concepto }}</td>
+                        <td>{{ ingreso.monto_ingreso | currency:'USD':'symbol':'1.2-2' }}</td>
+                        <td>
+                            <button (click)="deleteIngreso(ingreso)">Eliminar</button>
+                        </td>
+                    </tr>
+                }
+
+                <tr>
+                    <td colspan="2">Total</td>
+                    <td>{{ total | currency:'USD':'symbol':'1.2-2' }}</td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    <div class="formulario">
+        <app-form-ingreso (newIngreso)="addIngreso($event)"></app-form-ingreso>
+    </div>
+</section>

@@ -1,0 +1,8 @@
+<section class="formEgreso" (submit)="addEgreso()">
+    <h2>Nuevo Egreso</h2>
+    <form [formGroup]="formEgreso">
+    <input type="text" formControlName="concepto" placeholder="Concepto">
+    <input type="number" formControlName="monto_egreso" placeholder="Monto">
+    <button type="submit">Agregar</button>
+    </form>
+</section>
