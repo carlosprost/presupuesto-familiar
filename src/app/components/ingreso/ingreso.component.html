@@ -1,0 +1,55 @@
+<mat-card class="ingreso-card">
+  <mat-card-header>
+    <mat-card-title>Ingresos</mat-card-title>
+    <mat-card-subtitle>Total: {{ total | currency:'USD':'symbol':'1.2-2' }}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="table-container">
+      <table mat-table [dataSource]="ingresos" class="mat-elevation-z8">
+        
+        <!-- ID Column -->
+        <ng-container matColumnDef="id_ingreso">
+          <th mat-header-cell *matHeaderCellDef> ID </th>
+          <td mat-cell *matCellDef="let element"> {{element.id_ingreso}} </td>
+        </ng-container>
+
+        <!-- Concepto Column -->
+        <ng-container matColumnDef="concepto">
+          <th mat-header-cell *matHeaderCellDef> Concepto </th>
+          <td mat-cell *matCellDef="let element"> {{element.concepto}} </td>
+        </ng-container>
+
+        <!-- Monto Column -->
+        <ng-container matColumnDef="monto_ingreso">
+          <th mat-header-cell *matHeaderCellDef> Monto </th>
+          <td mat-cell *matCellDef="let element" class="amount-positive"> {{element.monto_ingreso | currency:'USD':'symbol':'1.2-2'}} </td>
+        </ng-container>
+
+        <!-- Acciones Column -->
+        <ng-container matColumnDef="acciones">
+          <th mat-header-cell *matHeaderCellDef> Acciones </th>
+          <td mat-cell *matCellDef="let element">
+            <button mat-icon-button color="primary" (click)="selectIngreso(element)">
+                <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button color="warn" (click)="deleteIngreso(element)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </div>
+
+    <div class="formulario">
+        <app-form-ingreso 
+            [ingreso]="selectedIngreso"
+            (newIngreso)="addIngreso($event)"
+            (updateIngreso)="onUpdateIngreso($event)">
+        </app-form-ingreso>
+    </div>
+
+  </mat-card-content>
+</mat-card>

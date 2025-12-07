@@ -1,0 +1,16 @@
+<form [formGroup]="formIngreso" (submit)="addIngreso()" class="action-form">
+  <mat-form-field appearance="outline" class="input-field">
+    <mat-label>Concepto</mat-label>
+    <input matInput formControlName="concepto" placeholder="Ej. Salario">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="input-field">
+    <mat-label>Monto</mat-label>
+    <span matTextPrefix>$&nbsp;</span>
+    <input matInput type="number" formControlName="monto_ingreso" placeholder="0.00">
+  </mat-form-field>
+
+  <button mat-mini-fab [color]="isEdit ? 'accent' : 'primary'" type="submit" [disabled]="formIngreso.invalid" [attr.aria-label]="isEdit ? 'Actualizar ingreso' : 'Agregar ingreso'">
+    <mat-icon>{{ isEdit ? 'check' : 'add' }}</mat-icon>
+  </button>
+</form>

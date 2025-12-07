@@ -1,0 +1,93 @@
+<div class="reports-container">
+    <mat-toolbar color="primary">
+        <button mat-icon-button routerLink="/home">
+            <mat-icon>arrow_back</mat-icon>
+        </button>
+        <span>Reportes Anuales y Declaración Jurada</span>
+        <span class="spacer"></span>
+        
+        <mat-form-field appearance="outline" class="year-selector">
+            <mat-label>Año Fiscal</mat-label>
+            <mat-select [(ngModel)]="selectedYear" (selectionChange)="onYearChange()">
+                <mat-option *ngFor="let year of years" [value]="year">
+                    {{year}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </mat-toolbar>
+
+    <div class="dashboard-grid">
+        <!-- Summary Cards -->
+        <mat-card class="metric-card income">
+            <mat-card-header>
+                <mat-card-title>Ingresos Totales</mat-card-title>
+                <mat-card-subtitle>{{selectedYear}}</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+                <div class="amount ignore-global-color">{{ totalIngresoAnual | currency }}</div>
+            </mat-card-content>
+        </mat-card>
+
+        <mat-card class="metric-card salary">
+            <mat-card-header>
+                <mat-card-title>Promedio Sueldo</mat-card-title>
+                <mat-card-subtitle>Mensual</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+                <div class="amount ignore-global-color">{{ promedioSueldo | currency }}</div>
+            </mat-card-content>
+        </mat-card>
+
+        <mat-card class="metric-card expense">
+            <mat-card-header>
+                <mat-card-title>Gastos Totales</mat-card-title>
+                <mat-card-subtitle>{{selectedYear}}</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+                <div class="amount ignore-global-color">{{ totalEgresoAnual | currency }}</div>
+            </mat-card-content>
+        </mat-card>
+
+        <mat-card class="metric-card balance" [class.negative]="balanceAnual < 0">
+            <mat-card-header>
+                <mat-card-title>Balance Neto</mat-card-title>
+                <mat-card-subtitle>Resultado Anual</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+                <div class="amount ignore-global-color">{{ balanceAnual | currency }}</div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+
+    <div class="details-section">
+        <h2>Detalle de Sueldos y Haberes</h2>
+        <p class="subtitle">Listado de ingresos filtrados por concepto "Sueldo", "Haber", o "Aguinaldo".</p>
+        
+        <table mat-table [dataSource]="sueldosList" class="mat-elevation-z8">
+            <!-- Fecha Column -->
+            <ng-container matColumnDef="fecha">
+                <th mat-header-cell *matHeaderCellDef> Fecha </th>
+                <td mat-cell *matCellDef="let element"> {{element.fecha_ingreso | date:'dd/MM/yyyy'}} </td>
+            </ng-container>
+
+            <!-- Concepto Column -->
+            <ng-container matColumnDef="concepto">
+                <th mat-header-cell *matHeaderCellDef> Concepto </th>
+                <td mat-cell *matCellDef="let element"> {{element.concepto}} </td>
+            </ng-container>
+
+            <!-- Monto Column -->
+            <ng-container matColumnDef="monto">
+                <th mat-header-cell *matHeaderCellDef> Monto </th>
+                <td mat-cell *matCellDef="let element"> {{element.monto_ingreso | currency}} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+            <tr class="mat-row" *matNoDataRow>
+                <td class="mat-cell" colspan="3">No se encontraron registros de sueldo para este año.</td>
+            </tr>
+        </table>
+    </div>
+</div>

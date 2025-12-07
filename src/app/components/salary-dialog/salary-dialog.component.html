@@ -1,0 +1,28 @@
+<h2 mat-dialog-title>Registro Mensual de Ingresos</h2>
+<mat-dialog-content>
+  <p>Para comenzar el mes, ingresa tu salario o ingreso principal.</p>
+  
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Monto Ingreso Principal</mat-label>
+    <input matInput type="number" [(ngModel)]="salaryAmount" (keyup)="updateSac()" placeholder="0.00">
+    <span matPrefix>$&nbsp;</span>
+  </mat-form-field>
+
+  <div *ngIf="showSacOption" class="sac-section">
+    <div class="sac-info">
+      <strong>¡Mes de Aguinaldo!</strong>
+      <p>Según tus registros, te corresponde cobrar el SAC.</p>
+    </div>
+    
+    <mat-checkbox [(ngModel)]="addAguinaldo">
+      Agregar Aguinaldo Automáticamente (${{ calculatedSac | number:'1.2-2' }})
+      <br>
+      <small class="hint">(Calculado al 50% de tu mejor sueldo del semestre)</small>
+    </mat-checkbox>
+  </div>
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button (click)="onCancel()">Cancelar</button>
+  <button mat-raised-button color="primary" [disabled]="!salaryAmount" (click)="onSave()">Confirmar</button>
+</mat-dialog-actions>

@@ -1,0 +1,25 @@
+<form [formGroup]="formEgreso" (submit)="addEgreso()" class="action-form">
+  <mat-form-field appearance="outline" class="input-field">
+    <mat-label>Concepto</mat-label>
+    <input matInput formControlName="concepto" placeholder="Ej. Renta">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="input-field">
+    <mat-label>Tipo</mat-label>
+    <mat-select formControlName="tipo">
+        <mat-option value="Necesario">Necesario (50%)</mat-option>
+        <mat-option value="Extra">Extra (30%)</mat-option>
+        <mat-option value="Financiero">Financiero (Pagos/Deudas - 20%)</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="input-field">
+    <mat-label>Monto</mat-label>
+    <span matTextPrefix>$&nbsp;</span>
+    <input matInput type="number" formControlName="monto_egreso" placeholder="0.00">
+  </mat-form-field>
+
+  <button mat-mini-fab [color]="isEdit ? 'accent' : 'warn'" type="submit" [disabled]="formEgreso.invalid" [attr.aria-label]="isEdit ? 'Actualizar egreso' : 'Agregar egreso'">
+    <mat-icon>{{ isEdit ? 'check' : 'add' }}</mat-icon>
+  </button>
+</form>

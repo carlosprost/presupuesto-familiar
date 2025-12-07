@@ -1,0 +1,45 @@
+<div class="container">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Configuración de Perfil</mat-card-title>
+      <mat-card-subtitle>Ajusta el presupuesto a tu situación laboral (Argentina)</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="form-container">
+        
+        <!-- Employment Type -->
+        <mat-form-field appearance="outline">
+          <mat-label>Tipo de Empleo</mat-label>
+          <mat-select [(ngModel)]="currentConfig.tipo_empleo" name="tipoEmpleo">
+            <mat-option value="Dependencia">Relación de Dependencia</mat-option>
+            <mat-option value="Autonomo">Autónomo / Monotributista</mat-option>
+            <mat-option value="Desempleado">Desempleado</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <!-- Unemployed Options -->
+        <div *ngIf="currentConfig.tipo_empleo === 'Desempleado'" class="subsettings">
+           <mat-checkbox 
+             [checked]="currentConfig.cobra_desempleo === 1" 
+             (change)="currentConfig.cobra_desempleo = $event.checked ? 1 : 0">
+             Cobro Plan de Desempleo / Subsidio
+           </mat-checkbox>
+        </div>
+
+        <!-- SAC (Aguinaldo) Options -->
+        <div *ngIf="currentConfig.tipo_empleo === 'Dependencia'" class="subsettings">
+          <h3>Sueldo Anual Complementario (Aguinaldo)</h3>
+          <p class="hint">Selecciona los meses donde cobras el SAC para recordatorios automáticos.</p>
+          <div class="checkbox-group">
+            <mat-checkbox [checked]="isMonthChecked('6')" (change)="toggleMonth('6', $event.checked)">Junio (1er SAC)</mat-checkbox>
+            <mat-checkbox [checked]="isMonthChecked('12')" (change)="toggleMonth('12', $event.checked)">Diciembre (2do SAC)</mat-checkbox>
+          </div>
+        </div>
+
+      </div>
+    </mat-card-content>
+    <mat-card-actions align="end">
+      <button mat-raised-button color="primary" (click)="saveConfig()">Guardar Cambios</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

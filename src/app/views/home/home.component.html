@@ -1,0 +1,52 @@
+<mat-toolbar color="primary">
+  <span>Presupuesto Familiar</span>
+  <span class="spacer"></span>
+  <button mat-icon-button routerLink="/reportes" matTooltip="Reportes y DDJJ" aria-label="Reportes">
+    <mat-icon>assessment</mat-icon>
+  </button>
+  <button mat-icon-button routerLink="/configuracion" aria-label="Configuración">
+    <mat-icon>settings</mat-icon>
+  </button>
+</mat-toolbar>
+
+<div class="container">
+  <div class="dashboard-grid">
+    <div class="summary-section">
+      <!-- Date Navigation -->
+      <div class="date-nav">
+          <button mat-icon-button (click)="changeMonth(-1)">
+              <mat-icon>chevron_left</mat-icon>
+          </button>
+          <span class="current-date">{{ currentDate | date:'MMMM yyyy' }}</span>
+          <button mat-icon-button (click)="changeMonth(1)">
+              <mat-icon>chevron_right</mat-icon>
+          </button>
+      </div>
+
+      <app-presupuesto 
+        [ingresoTotal]="ingresoTotal"
+        [egresoTotal]="egresoTotal" 
+        [egresos]="filteredEgresos"
+        [resto]="resto">
+      </app-presupuesto>
+    </div>
+    
+    <div class="data-section">
+        <app-ingreso 
+            [ingresos]="filteredIngresos"
+            [total]="ingresoTotal"
+            (newIngreso)="addIngreso($event)"
+            (delIngreso)="deleteIngreso($event)"
+            (updateIngreso)="updateIngreso($event)">
+        </app-ingreso>
+      
+        <app-egreso 
+            [egresos]="filteredEgresos"
+            [total]="egresoTotal"
+            (newEgreso)="addEgreso($event)"
+            (delEgreso)="deleteEgreso($event)"
+            (updateEgreso)="updateEgreso($event)">
+        </app-egreso>
+    </div>
+  </div>
+</div>

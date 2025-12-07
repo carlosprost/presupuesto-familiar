@@ -1,0 +1,28 @@
+.full-width {
+  width: 100%;
+}
+
+.sac-section {
+  background: #e8f5e9;
+  border-left: 4px solid #4caf50;
+  padding: 1rem;
+  margin-top: 1rem;
+  border-radius: 4px;
+
+  .sac-info {
+    margin-bottom: 0.5rem;
+    
+    strong {
+      color: #2e7d32;
+    }
+    p {
+      margin: 4px 0;
+      font-size: 0.9rem;
+    }
+  }
+
+  .hint {
+    color: #666;
+    margin-left: 24px;
+  }
+}
