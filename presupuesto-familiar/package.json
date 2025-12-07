@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng build && node server/index.js",
+    "start": "ng build --prerender=false --ssr=false && node server/index.js",
     "dev": "concurrently \"ng serve\" \"node server/index.js\"",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
