@@ -11,12 +11,11 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 
 @Component({
-  selector: 'app-egreso',
-  standalone: true,
-  imports: [AsyncPipe, CurrencyPipe, HttpClientModule, FormEgresoComponent, MatCardModule, MatTableModule, MatButtonModule, MatIconModule],
-  providers: [EgresoService],
-  templateUrl: './egreso.component.html',
-  styleUrl: './egreso.component.scss'
+    selector: 'app-egreso',
+    imports: [AsyncPipe, CurrencyPipe, HttpClientModule, FormEgresoComponent, MatCardModule, MatTableModule, MatButtonModule, MatIconModule],
+    providers: [EgresoService],
+    templateUrl: './egreso.component.html',
+    styleUrl: './egreso.component.scss'
 })
 export class EgresoComponent {
 

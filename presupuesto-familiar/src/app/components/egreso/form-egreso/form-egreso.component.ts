@@ -8,12 +8,11 @@ import { EgresoService } from '../egreso.service';
 import { Egreso } from '../egreso.interface';
 
 @Component({
-  selector: 'app-form-egreso',
-  standalone: true,
-  imports: [ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatIconModule],
-  providers: [EgresoService],
-  templateUrl: './form-egreso.component.html',
-  styleUrl: './form-egreso.component.scss'
+    selector: 'app-form-egreso',
+    imports: [ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatIconModule],
+    providers: [EgresoService],
+    templateUrl: './form-egreso.component.html',
+    styleUrl: './form-egreso.component.scss'
 })
 export class FormEgresoComponent {
   @Output() newEgreso: EventEmitter<Egreso> = new EventEmitter<Egreso>();

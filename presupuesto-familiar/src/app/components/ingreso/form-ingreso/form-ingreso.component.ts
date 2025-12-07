@@ -8,12 +8,11 @@ import { IngresoService } from '../ingreso.service';
 import { Ingreso } from '../ingreso.interfaces';
 
 @Component({
-  selector: 'app-form-ingreso',
-  standalone: true,
-  imports: [ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatIconModule],
-  providers: [IngresoService],
-  templateUrl: './form-ingreso.component.html',
-  styleUrl: './form-ingreso.component.scss'
+    selector: 'app-form-ingreso',
+    imports: [ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatIconModule],
+    providers: [IngresoService],
+    templateUrl: './form-ingreso.component.html',
+    styleUrl: './form-ingreso.component.scss'
 })
 export class FormIngresoComponent {
   @Output() newIngreso: EventEmitter<Ingreso> = new EventEmitter<Ingreso>();

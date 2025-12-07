@@ -14,12 +14,11 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 
 @Component({
-  selector: 'app-ingreso',
-  standalone: true,
-  imports: [AsyncPipe, CurrencyPipe, HttpClientModule, FormIngresoComponent, MatCardModule, MatTableModule, MatButtonModule, MatIconModule],
-  providers: [IngresoService],
-  templateUrl: './ingreso.component.html',
-  styleUrl: './ingreso.component.scss'
+    selector: 'app-ingreso',
+    imports: [AsyncPipe, CurrencyPipe, HttpClientModule, FormIngresoComponent, MatCardModule, MatTableModule, MatButtonModule, MatIconModule],
+    providers: [IngresoService],
+    templateUrl: './ingreso.component.html',
+    styleUrl: './ingreso.component.scss'
 })
 export class IngresoComponent {
 

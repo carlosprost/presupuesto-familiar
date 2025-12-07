@@ -13,11 +13,10 @@ import { PresupuestoComponent } from '../../components/presupuesto/presupuesto.c
 import { MatToolbarModule } from '@angular/material/toolbar';
 
 @Component({
-  selector: 'app-home',
-  standalone: true,
-  imports: [CommonModule, IngresoComponent, EgresoComponent, PresupuestoComponent, MatToolbarModule],
-  templateUrl: './home.component.html',
-  styleUrl: './home.component.scss',
+    selector: 'app-home',
+    imports: [CommonModule, IngresoComponent, EgresoComponent, PresupuestoComponent, MatToolbarModule],
+    templateUrl: './home.component.html',
+    styleUrl: './home.component.scss'
 })
 export class HomeComponent implements OnInit {
   ingresoTotal!: number;
