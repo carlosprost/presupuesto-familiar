@@ -10,11 +10,12 @@ import { Egreso } from '../../components/egreso/egreso.interface';
 import { CommonModule } from '@angular/common';
 import { storeFeature } from './store.reducer';
 import { PresupuestoComponent } from '../../components/presupuesto/presupuesto.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, IngresoComponent, EgresoComponent, PresupuestoComponent],
+  imports: [CommonModule, IngresoComponent, EgresoComponent, PresupuestoComponent, MatToolbarModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })

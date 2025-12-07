@@ -1,8 +1,16 @@
-<section class="formIngreso">
-    <h2>Nuevo Ingreso</h2>
-    <form [formGroup]="formIngreso" (submit)="addIngreso()">
-    <input type="text" formControlName="concepto" placeholder="Concepto">
-    <input type="number" formControlName="monto_ingreso" placeholder="Monto">
-    <button type="submit">Agregar</button>
-    </form>
-</section>
+<form [formGroup]="formIngreso" (submit)="addIngreso()" class="action-form">
+  <mat-form-field appearance="outline" class="input-field">
+    <mat-label>Concepto</mat-label>
+    <input matInput formControlName="concepto" placeholder="Ej. Salario">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="input-field">
+    <mat-label>Monto</mat-label>
+    <span matTextPrefix>$&nbsp;</span>
+    <input matInput type="number" formControlName="monto_ingreso" placeholder="0.00">
+  </mat-form-field>
+
+  <button mat-mini-fab color="primary" type="submit" [disabled]="formIngreso.invalid" aria-label="Agregar ingreso">
+    <mat-icon>add</mat-icon>
+  </button>
+</form>

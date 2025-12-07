@@ -8,11 +8,15 @@ import { FormIngresoComponent } from './form-ingreso/form-ingreso.component';
 import { Form } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { StoreActions } from '../../views/home/store.actions';
+import { MatCardModule } from '@angular/material/card';
+import { MatTableModule } from '@angular/material/table';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-ingreso',
   standalone: true,
-  imports: [AsyncPipe, CurrencyPipe, HttpClientModule, FormIngresoComponent],
+  imports: [AsyncPipe, CurrencyPipe, HttpClientModule, FormIngresoComponent, MatCardModule, MatTableModule, MatButtonModule, MatIconModule],
   providers: [IngresoService],
   templateUrl: './ingreso.component.html',
   styleUrl: './ingreso.component.scss'
@@ -26,6 +30,8 @@ export class IngresoComponent {
 
   @Input() ingresos!: Ingreso[];
   @Input() total!: number;
+
+  displayedColumns: string[] = ['id_ingreso', 'concepto', 'monto_ingreso', 'acciones'];
 
   deleteIngreso(ingreso: Ingreso) {
     this.delIngreso.emit(ingreso);
